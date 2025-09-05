@@ -1,5 +1,21 @@
+import 'package:design/P02_decoration.dart';
+import 'package:design/P02_decoration.dart';
+import 'package:design/P03_Card.dart';
+import 'package:design/Task%2010.dart';
 import 'package:design/row_column.dart';
+import 'package:design/Task 7_listview2.dart';
 import 'package:flutter/material.dart';
+
+import 'P04_Margin_Padding.dart';
+import 'P05_image.dart';
+import 'P06_listview1.dart';
+import 'P07_listview2.dart';
+import 'P08_listtile.dart';
+import 'P09_stack1.dart';
+import 'P10_stack2.dart';
+import 'Task 6_listview.dart';
+import 'Task 8_listtie.dart';
+import 'Task 9.dart';
 
 void main() {
   runApp(const mytext());
@@ -10,7 +26,7 @@ class mytext extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: MyColumn());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: Mystack_2());
   }
 }
 
@@ -21,10 +37,7 @@ class TextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'My App',
-          style: TextStyle(
-            fontSize: 25,
+        title: Text('My App', style: TextStyle(fontSize: 25,
             color: Colors.black,
             backgroundColor: Colors.white,
           ),

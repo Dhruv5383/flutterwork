@@ -12,7 +12,7 @@ void main(List<String> args) {
   } else {
     print('b is greater than a');
   }
-
+  // else if ladder
   //print("enter name? = ");
   //String? name = stdin.readLineSync()!;
   print('enter marks = ');
@@ -33,7 +33,7 @@ void main(List<String> args) {
   } else {
     print('invalid input');
   }
-
+  //
   print('enter age = ');
   int age = int.parse(stdin.readLineSync()!);
 
@@ -46,7 +46,7 @@ void main(List<String> args) {
   } else {
     print('age is less than 18');
   }
-
+  // switch
   print('1.English 2.Hindi 3.Gujarati');
   print('enter choice  = ');
   int c = int.parse(stdin.readLineSync()!);
