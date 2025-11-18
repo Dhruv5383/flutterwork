@@ -1,4 +1,3 @@
-import 'package:assignment_flutter/splashscreen_Task%2022.dart';
 import 'package:flutter/material.dart';
 
 import 'Task 01.dart';
@@ -21,6 +20,10 @@ import 'Task 18.dart';
 import 'Task 19.dart';
 import 'Task 20.dart';
 import 'Task 21.dart';
+import 'Task 22.dart';
+import 'Task 23.dart';
+import 'Task 24.dart';
+import 'Task 25.dart';
 
 void main() {
   runApp(const mytext1());
@@ -31,7 +34,7 @@ class mytext1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashScreeen1());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: SingleFileTodoApp());
   }
 }
 //
