@@ -26,7 +26,7 @@ class mytext extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: Mystack_2());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: MyDecoration());
   }
 }
 

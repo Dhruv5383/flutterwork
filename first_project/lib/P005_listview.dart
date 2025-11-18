@@ -33,7 +33,6 @@ class MyListView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-
                   height: 100,
                   width: 100,
                   child: CircleAvatar(

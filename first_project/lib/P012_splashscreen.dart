@@ -4,10 +4,14 @@ import 'dart:async';
 import 'package:first_project/P013_screen2.dart';
 import 'package:flutter/material.dart';
 
+import 'P003_row_col.dart';
 import 'P014_bottomnavigation.dart';
 import 'P015_navigation_drawer.dart';
 import 'P016_tabbar.dart';
 import 'P017_Form.dart';
+import 'P018_animatedcontainer.dart';
+import 'P019_animatedpositioned.dart';
+import 'facebook_loginpage.dart';
 
 class SplashScreeen extends StatefulWidget {
   const SplashScreeen({super.key});
@@ -22,10 +26,7 @@ class _SplashScreeenState extends State<SplashScreeen> {
     super.initState();
 
     Timer(Duration(seconds: 2), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => MyNavigationDrawer()),
-      );
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyAnimatedPositioned()));
     });
   }
 

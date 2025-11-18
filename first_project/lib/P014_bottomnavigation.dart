@@ -50,8 +50,6 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
           BottomNavigationBarItem(icon: Icon(Icons.wechat_sharp), label: 'Chat'),
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Setting'),
-
-
         ],
       ),
     );

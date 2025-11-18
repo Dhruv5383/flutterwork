@@ -1,9 +1,12 @@
 import 'package:demo/P011_datetime.dart';
+import 'package:demo/ass01.dart';
 import 'package:demo/demo%203.dart';
 import 'package:demo/demo%204.dart';
 import 'package:demo/demo%205.dart';
 import 'package:demo/demo%206.dart';
 import 'package:demo/demo%207.dart';
+import 'package:demo/task%20002.dart';
+import 'package:demo/task%20003.dart';
 import 'package:flutter/material.dart';
 
 import 'Instagram.dart';
@@ -21,7 +24,7 @@ class mytext extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: WhatsAppWelcome());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: task3 ());
   }
 }
 
