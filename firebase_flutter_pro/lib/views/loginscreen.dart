@@ -34,7 +34,7 @@ class _LoginscreenState extends State<Loginscreen> {
             Container(
               height: 300,
               alignment: Alignment.center,
-              child: Lottie.asset("assets/s1.json"),
+              child: Lottie.asset('assets/login.json'),
             ),
             SizedBox(height: 40),
             Container(

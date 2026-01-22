@@ -40,7 +40,7 @@ class _SignupscreenState extends State<Signupscreen> {
             Container(
               height: 300,
               alignment: Alignment.center,
-              child: LottieBuilder.asset('assets/s2.json'),
+              child: Lottie.asset('assets/login.json'),
             ),
             SizedBox(height: 20),
             Container(
@@ -104,19 +104,19 @@ class _SignupscreenState extends State<Signupscreen> {
 
                   await FirebaseAuth.instance
                       .createUserWithEmailAndPassword(
-                    email: email,
-                    password: password,
-                  )
+                        email: email,
+                        password: password,
+                      )
                       .then(
                         (value) => {
-                      log(1 as String),
-                      signUpUser(name, contact, email, password),
-                    },
-                  );
+                          log(1 as String),
+                          signUpUser(name, contact, email, password),
+                        },
+                      );
                 },
                 child: Text(
                   ''
-                      'signUp',
+                  'signUp',
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
                 style: ButtonStyle(
@@ -125,15 +125,18 @@ class _SignupscreenState extends State<Signupscreen> {
               ),
             ),
             SizedBox(height: 20),
+
             GestureDetector(
               onTap: () {
-                Get.to(() => Loginscreen());
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (context) => Loginscreen()));
               },
               child: Container(
                 child: Card(
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
-                    child: Text("already have an account? Login"),
+                    child: Text("Already have an account? SignIn"),
                   ),
                 ),
               ),
