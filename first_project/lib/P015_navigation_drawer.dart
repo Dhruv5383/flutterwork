@@ -1,3 +1,4 @@
+import 'package:first_project/pages/chat.dart';
 import 'package:first_project/pages/home.dart';
 import 'package:flutter/material.dart';
 
@@ -52,7 +53,15 @@ class _MyNavigationDrawerState extends State<MyNavigationDrawer> {
             ).push(MaterialPageRoute(builder: (context) => Home()));
           },
         ),
-        ListTile(leading: Icon(Icons.chat), title: Text('Chat')),
+        ListTile(
+          leading: Icon(Icons.chat),
+          title: Text('Chat'),
+          onTap: () {
+            Navigator.of(
+              context,
+            ).push(MaterialPageRoute(builder: (context) => Chat()));
+          },
+        ),
         ListTile(
           leading: Icon(Icons.favorite_outline),
           title: Text('Favourite'),

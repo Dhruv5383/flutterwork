@@ -45,19 +45,21 @@ import 'Task 34.dart';
 import 'Task 35.dart';
 import 'Task 36.dart';
 import 'Task 37.dart';
+import 'Task 41.dart';
+import 'Task 42.dart';
 
-// void main() {
-//   runApp(const mytext1());
-// }
-//
-// class mytext1 extends StatelessWidget {
-//   const mytext1 ({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(debugShowCheckedModeBanner: false, home: Task_38_105());
-//   }
-// }
+void main() {
+  runApp(const mytext1());
+}
+
+class mytext1 extends StatelessWidget {
+  const mytext1 ({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(debugShowCheckedModeBanner: false, home: AdvancedExpandDemo());
+  }
+}
 
 
 // class TextWidget extends StatelessWidget {
@@ -225,42 +227,42 @@ import 'Task 37.dart';
 //     );
 //   }
 // }
-
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'Task 40 Login Screen.dart';
-import 'Task 40_2 Auth Provider (Global State).dart';
-import 'auth_provider.dart';
-
-void main() {
-  runApp(
-    ChangeNotifierProvider(
-      create: (_) => AuthProvider(),
-      child: const MyApp(),
-    ),
-  );
-}
-
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Consumer<AuthProvider>(
-        builder: (context, auth, _) {
-          return auth.isLoggedIn
-              ? const HomeScreen()
-              : const LoginScreen();
-        },
-      ),
-    );
-  }
-}
-
+//
+// import 'package:flutter/material.dart';
+// import 'package:provider/provider.dart';
+// import 'Task 40 Login Screen.dart';
+// import 'Task 40_2 Auth Provider (Global State).dart';
+// import 'auth_provider.dart';
+//
+// void main() {
+//   runApp(
+//     ChangeNotifierProvider(
+//       create: (_) => AuthProvider(),
+//       child: const MyApp(),
+//     ),
+//   );
+// }
+//
+// class MyApp extends StatefulWidget {
+//   const MyApp({super.key});
+//
+//   @override
+//   State<MyApp> createState() => _MyAppState();
+// }
+//
+// class _MyAppState extends State<MyApp> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Consumer<AuthProvider>(
+//         builder: (context, auth, _) {
+//           return auth.isLoggedIn
+//               ? const HomeScreen()
+//               : const LoginScreen();
+//         },
+//       ),
+//     );
+//   }
+// }
+//
 
