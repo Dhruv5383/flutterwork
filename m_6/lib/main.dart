@@ -1,53 +1,142 @@
+// lib/main.dart
+//
+// MyCityConnect — Flutter App
+// ────────────────────────────────────────────────────────────────────
+// Firebase setup (run ONCE before first launch):
+//   1. dart pub global activate flutterfire_cli
+//   2. flutterfire configure
+//      (creates lib/firebase_options.dart automatically)
+//   3. In this file, uncomment the Firebase initialization block below.
+//   4. In auth_service.dart, uncomment all Firebase lines.
+//
+// Without these steps the app runs fully on mock/simulation mode.
+// ────────────────────────────────────────────────────────────────────
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-import 'Q 1 Flutter icon splash.dart';
+// Uncomment after `flutterfire configure`:
+// import 'package:firebase_core/firebase_core.dart';
+// import 'firebase_options.dart';
 
+import 'Constants.dart';
+import 'Contact us screen.dart';
+import 'Home screen.dart';
+import 'Login screen.dart';
+import 'My bookings screen.dart';
+import 'Profile screen.dart';
+import 'Register screen.dart';
+import 'Service detail screen.dart';
+import 'Splash screen.dart';
+// import 'utils/constants.dart';
+// import 'screens/splash_screen.dart';
+// import 'screens/login_screen.dart';
+// import 'screens/register_screen.dart';
+// import 'screens/home_screen.dart';
+// import 'screens/service_detail_screen.dart';
+// import 'screens/my_bookings_screen.dart';
+// import 'screens/profile_screen.dart';
+// import 'screens/contact_us_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Lock to portrait orientation
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  // System UI overlay style
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.light,
+  ));
+
+  // ── Firebase init (uncomment after flutterfire configure) ──────────
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
+  // ──────────────────────────────────────────────────────────────────
+
+  runApp(const MyCityConnectApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyCityConnectApp extends StatelessWidget {
+  const MyCityConnectApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Nova',
+      title: AppStrings.appName,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(useMaterial3: true),
-      home: const SplashScreen(),
+      theme: AppTheme.lightTheme,
+      initialRoute: AppRoutes.splash,
+      onGenerateRoute: _generateRoute,
+    );
+  }
+
+  Route<dynamic>? _generateRoute(RouteSettings settings) {
+    Widget page;
+
+    switch (settings.name) {
+      case AppRoutes.splash:
+        page = const SplashScreen();
+        break;
+      case AppRoutes.login:
+        page = const LoginScreen();
+        break;
+      case AppRoutes.register:
+        page = const RegisterScreen();
+        break;
+      case AppRoutes.home:
+        page = const HomeScreen();
+        break;
+      case AppRoutes.serviceDetail:
+        page = const ServiceDetailScreen();
+        break;
+      case AppRoutes.myBookings:
+        page = const MyBookingsScreen();
+        break;
+      case AppRoutes.profile:
+        page = const ProfileScreen();
+        break;
+      case AppRoutes.contactUs:
+        page = const ContactUsScreen();
+        break;
+      default:
+        page = const Scaffold(
+          body: Center(child: Text('404 - Page not found')),
+        );
+    }
+
+    return PageRouteBuilder(
+      settings: settings,
+      pageBuilder: (_, __, ___) => page,
+      transitionsBuilder: (_, animation, __, child) {
+        return FadeTransition(
+          opacity: animation,
+          child: SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0.05, 0),
+              end: Offset.zero,
+            ).animate(CurvedAnimation(
+              parent: animation,
+              curve: Curves.easeOut,
+            )),
+            child: child,
+          ),
+        );
+      },
+      transitionDuration: const Duration(milliseconds: 300),
     );
   }
 }
-//
-// void main() {
-//   runApp(const IconSplashShowcase());
-// }
-//
-// // ─────────────────────────────────────────────
-// //  Root App
-// // ─────────────────────────────────────────────
-// class IconSplashShowcase extends StatelessWidget {
-//   const IconSplashShowcase({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Nova – App Icon & Splash',
-//       debugShowCheckedModeBanner: false,
-//       theme: ThemeData(
-//         colorScheme: ColorScheme.fromSeed(
-//           seedColor: const Color(0xFF6C63FF),
-//           brightness: Brightness.dark,
-//         ),
-//         useMaterial3: true,
-//       ),
-//       home: const SplashScreen(),
-//     );
-//   }
-// }
 
+
+
+// import 'package:flutter/material.dart';
+//
 // void main() {
 //   runApp(const MyApp());
 // }

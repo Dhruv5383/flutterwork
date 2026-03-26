@@ -1,53 +1,79 @@
+// lib/main.dart
+// TaskMate app entry point — initializes theme from SharedPreferences
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'App theme.dart';
+import 'Home screen.dart';
+import 'Preferences service.dart';
+//import 'services/preferences_service.dart';
+//import 'theme/app_theme.dart';
+//import 'screens/home_screen.dart';
 
-import 'Q 1 Flutter icon splash.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
+  // Lock to portrait orientation for consistent mobile UX
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 
-void main() {
-  runApp(const MyApp());
+  // Load saved theme before first frame
+  final savedTheme = await PreferencesService().getThemeMode();
+
+  runApp(TaskMateApp(initialThemeMode: savedTheme));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class TaskMateApp extends StatefulWidget {
+  final ThemeMode initialThemeMode;
+
+  const TaskMateApp({super.key, required this.initialThemeMode});
+
+  @override
+  State<TaskMateApp> createState() => _TaskMateAppState();
+}
+
+class _TaskMateAppState extends State<TaskMateApp> {
+  late ThemeMode _themeMode;
+  final PreferencesService _prefs = PreferencesService();
+
+  @override
+  void initState() {
+    super.initState();
+    _themeMode = widget.initialThemeMode;
+  }
+
+  /// Toggle between light and dark (system stays as system)
+  void _toggleTheme() {
+    setState(() {
+      _themeMode = _themeMode == ThemeMode.dark
+          ? ThemeMode.light
+          : ThemeMode.dark;
+    });
+    _prefs.saveThemeMode(_themeMode);
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Nova',
+      title:         'TaskMate',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(useMaterial3: true),
-      home: const SplashScreen(),
+      theme:         AppTheme.lightTheme,
+      darkTheme:     AppTheme.darkTheme,
+      themeMode:     _themeMode,
+      home:          HomeScreen(
+        onThemeToggle:    _toggleTheme,
+        currentThemeMode: _themeMode,
+      ),
     );
   }
 }
-//
-// void main() {
-//   runApp(const IconSplashShowcase());
-// }
-//
-// // ─────────────────────────────────────────────
-// //  Root App
-// // ─────────────────────────────────────────────
-// class IconSplashShowcase extends StatelessWidget {
-//   const IconSplashShowcase({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Nova – App Icon & Splash',
-//       debugShowCheckedModeBanner: false,
-//       theme: ThemeData(
-//         colorScheme: ColorScheme.fromSeed(
-//           seedColor: const Color(0xFF6C63FF),
-//           brightness: Brightness.dark,
-//         ),
-//         useMaterial3: true,
-//       ),
-//       home: const SplashScreen(),
-//     );
-//   }
-// }
 
+
+
+// import 'package:flutter/material.dart';
+//
 // void main() {
 //   runApp(const MyApp());
 // }
